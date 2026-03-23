@@ -1,0 +1,100 @@
+import java.util.Scanner;
+
+void main() {
+    Scanner sc = new Scanner(System.in);
+    int insert;
+    do {
+
+        System.out.println("\n#### Elevator System ####");
+        System.out.println("1 - START SYSTEM");
+        System.out.println("2 - EXIT");
+
+        insert = sc.nextInt();
+
+        switch (insert) {
+            case 1:
+                new Elevator();
+                break;
+            case 2:
+                System.out.println("Leaving...");
+                break;
+            default:
+                System.out.println("Invalid number entered!");
+        }
+        if (insert == 1) {
+            System.out.println("#### Elevator System ####");
+            System.out.println("1 - START SYSTEM");
+            System.out.println("2 - EXIT\n");
+        }
+    } while (insert != 2);
+}
+
+public class Elevator {
+    int floor = 0;
+    int totalFloor = 4;
+    int elevatorCapacity = 8;
+    int peoplePresent = 0;
+
+    public Elevator() {
+        this.totalFloor = totalFloor;
+        this.elevatorCapacity = elevatorCapacity;
+    }
+
+    public void toEnter(){
+        if (peoplePresent < elevatorCapacity) {
+            peoplePresent += 1;
+        } else System.out.println("Elevator Full!");
+    }
+
+    public void exit(){
+        peoplePresent -= 1;
+    }
+
+    public void up(){
+        if (floor == 0) {
+            floor += 1;
+        } else if (floor == totalFloor) {
+            System.out.println("This is the top floor!");
+        }
+    }
+
+    public void toDescend(){
+        if (floor == 0) {
+            System.out.println("There is no lower floor!");
+        } else if (floor <= totalFloor) {
+            floor -= 1;
+        }
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public int getTotalFloor() {
+        return totalFloor;
+    }
+
+    public void setTotalFloor(int totalFloor) {
+        this.totalFloor = totalFloor;
+    }
+
+    public int getElevatorCapacity() {
+        return elevatorCapacity;
+    }
+
+    public void setElevatorCapacity(int elevatorCapacity) {
+        this.elevatorCapacity = elevatorCapacity;
+    }
+
+    public int getPeoplePresent() {
+        return peoplePresent;
+    }
+
+    public void setPeoplePresent(int peoplePresent) {
+        this.peoplePresent = peoplePresent;
+    }
+}
